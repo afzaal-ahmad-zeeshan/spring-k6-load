@@ -5,6 +5,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
 
+import com.microsoft.applicationinsights.attach.ApplicationInsights;
+import com.microsoft.applicationinsights.connectionstring.ConnectionString;
+
 @SpringBootApplication
 public class SpringK6LoadApplication {
 
@@ -12,7 +15,8 @@ public class SpringK6LoadApplication {
 	Environment env;
 
 	public static void main(String[] args) {
+		ApplicationInsights.attach(); // Attach Application Insights agent
+		ConnectionString.configure("<your-connection-string-here>"); // Set your connection string here
 		SpringApplication.run(SpringK6LoadApplication.class, args);
 	}
-
 }
