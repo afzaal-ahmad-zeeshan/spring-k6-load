@@ -1,6 +1,7 @@
 package com.afzaalahmadzeeshan.demos.java.spring_k6_load;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
@@ -15,8 +16,10 @@ public class SpringK6LoadApplication {
 	Environment env;
 
 	public static void main(String[] args) {
+		String connectionString = env.getProperty("APPLICATIONINSIGHTS_CONNECTION_STRING");
+
 		ApplicationInsights.attach(); // Attach Application Insights agent
-		ConnectionString.configure("<your-connection-string-here>"); // Set your connection string here
+		ConnectionString.configure(connectionString); // Set your connection string here
 		SpringApplication.run(SpringK6LoadApplication.class, args);
 	}
 }
