@@ -16,6 +16,24 @@ $ ./mvnw package
 
 The output of this command can be used with Docker.
 
+To create a Docker image for the app, use:
+
+```shell
+$ docker build -t springk6load:latest .
+```
+
+To run the application, use:
+
+```shell
+$ docker run -d --name springk6load_instance -p 8765:8080 springk6load:latest
+```
+
+To remove the Spring container from the system, use:
+
+```shell
+$ docker rm springk6load_instance
+```
+
 ## K6 folder
 
 The K6 scripts are added to the `/src/test/load` folder. Read the `README.md`
