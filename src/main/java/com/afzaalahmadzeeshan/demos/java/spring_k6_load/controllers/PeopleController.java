@@ -8,6 +8,8 @@ import com.afzaalahmadzeeshan.demos.java.spring_k6_load.repositories.PeopleRepos
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController()
 public class PeopleController {
@@ -22,9 +24,9 @@ public class PeopleController {
         return peopleRepository.findAll();
     }
 
-    @GetMapping("add")
-    public boolean addPeople() {
-        peopleRepository.save(new Person("John"));
+    @PostMapping("add")
+    public boolean addPeople(@RequestBody Person person) {
+        peopleRepository.save(person);
         return true;
     }
 }
