@@ -24,7 +24,7 @@ public class PeopleController {
         return peopleRepository.findAll();
     }
 
-    @PostMapping("add")
+    @PostMapping("people")
     public boolean addPeople(@RequestBody Person person) {
         peopleRepository.save(person);
         return true;
